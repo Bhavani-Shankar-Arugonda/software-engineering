@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGSPDCL</title>
+    <style>
+    body {
+        background-color: rgb(174, 195, 197);
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+
+    form {
+        margin-bottom: 15px;
+    }
+
+    input {
+        padding: 10px;
+        margin: 6px;
+        width: 220px;
+        font-size: 14px;
+    }
+
+    input[type="submit"],
+    button {
+        padding: 10px 18px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    #bill {
+        border: 2px solid black;
+        background-color: white;
+        width: 55%;          /* better ratio */
+        margin: 20px auto;   /* spacing from form */
+        padding: 20px;       /* more inner space */
+        display: none;
+        text-align: left;    /* bill reads better */
+        border-radius: 6px;
+    }
+
+    h2, h3 {
+        color: blue;
+        text-align: center;
+    }
+</style>
+
+</head>
+
+<body>
+    <h1>TGSPDCL</h1>
+    <h3>Bill Generator</h3>
+    <form id="billForm" onsubmit="event.preventDefault(); generateBill()">
+        <input id="service" placeholder="Service Number">
+        <input id="reading" placeholder="New Meter Reading">
+        <input type="submit" value="Generate Bill">
+        
+    </form>
+    <form action="/page.html">
+        <button type="submit">back</button>
+    </form>
+    <p id="bill"></p>
+</body>
+<script>
+    function generateBill() {
+
+        fetch("/bill", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+                serviceNumber: document.getElementById('service').value,
+                newReading: Number(document.getElementById('reading').value)
+            })
+        }).then(res => res.json()).then(data => {
+            const billElement = document.getElementById("bill");
+        billElement.style.display = "block";
+            billElement.innerHTML = `
+  <h3>Electricity Bill</h3>
+  <hr>
+   <strong>Consumer Name:</strong> ${data.name} <br><br>
+  <strong>Last Billing Date:</strong> ${new Date(data.date).toLocaleString()} <br>
+  <strong>Current Date :</strong>${new Date().toLocaleString()}<br>
+  <strong>Service Number : </strong> ${data.serviceNumber}<br>
+  <strong>Units Used:</strong> ${data.unitsUsed} <br>
+  <strong>Bill Amount:</strong> ₹${data.billAmount} <br>
+
+  <hr>
+  <strong>Status:</strong> Bill Generated Successfully
+`;
+        }).catch(err => alert("Frontend Error: " + err));
+    }
+    document.getElementById("billForm").reset();
+</script>
+
+</html>
