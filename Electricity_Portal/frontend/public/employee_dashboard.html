@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard - Electricity Dept</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Employee Dashboard</h1>
+            <button id="logout-btn">Logout</button>
+        </header>
+
+        <main>
+            <section id="generate-bill-section">
+                <h2>Generate Bill</h2>
+                <form id="bill-form">
+                    <input type="text" id="bill-serviceNumber" placeholder="Consumer Service Number" required>
+                    <input type="number" id="bill-currentReading" placeholder="Current Meter Reading" required>
+                    <button type="submit">Generate Bill</button>
+                </form>
+                <div id="bill-result">
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/employee.js"></script>
+</body>
+
+</html>

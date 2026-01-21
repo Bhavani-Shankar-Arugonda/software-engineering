@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Electricity Dept</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <button id="logout-btn">Logout</button>
+        </header>
+
+        <main>
+            <section id="register-user-section">
+                <h2>Register New User</h2>
+                <form id="register-form">
+                    <select id="reg-role" required>
+                        <option value="consumer">Consumer</option>
+                        <option value="employee">Employee</option>
+                    </select>
+                    <input type="text" id="reg-name" placeholder="Full Name" required>
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                    <input type="password" id="reg-password" placeholder="Password" required>
+
+                    <input type="text" id="reg-employeeId" placeholder="Employee ID" style="display:none;">
+
+                    <input type="text" id="reg-serviceNumber" placeholder="Service Number" style="display:block;">
+                    <select id="reg-consumerType" style="display:block;">
+                        <option value="household">Household</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="industrial">Industrial</option>
+                    </select>
+                    <input type="text" id="reg-address" placeholder="Address" style="display:block;">
+                    <input type="text" id="reg-phone" placeholder="Phone" style="display:block;">
+
+                    <button type="submit">Register</button>
+                </form>
+            </section>
+
+            <section id="users-list-section">
+                <h2>All Users</h2>
+                <button id="refresh-users">Refresh List</button>
+                <div id="users-table-container">
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
