@@ -1,4 +1,4 @@
-# Documentation: Advanced Electricity Database System
+# Documentation: Electricity Database System
 
 ## 3. Module Specifications
 
