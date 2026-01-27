@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Dept Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Welcome to Electricity Department Portal</h1>
+        <div class="auth-forms">
+            <div id="login-section">
+                <h2>Login</h2>
+                <select id="role-select">
+                    <option value="consumer">Consumer</option>
+                    <option value="employee">Employee</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <form id="login-form">
+                    <input type="text" id="login-id" placeholder="Service Number / Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
